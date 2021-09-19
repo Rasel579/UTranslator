@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.mainfragment.MainFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <androidx.constraintlayout.utils.widget.MotionButton
+           android:id="@+id/original_language"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="@string/start_language_text"/>
+       <ImageButton
+           android:id="@+id/image_trans"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:src="@android:drawable/stat_notify_sync"
+           android:contentDescription="TODO" />
+       <androidx.constraintlayout.utils.widget.MotionButton
+           android:id="@+id/translation_language"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="@string/end_language_text"/>
+   </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:helperText="Enter text"
+        android:hint="@string/hint_edit_text"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/translate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@android:drawable/ic_menu_search"
+            android:contentDescription="@string/btn_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_translate_layout"/>
+    </LinearLayout>
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_circular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminate="true"
+        tools:visibility="visible"/>
+</FrameLayout>
