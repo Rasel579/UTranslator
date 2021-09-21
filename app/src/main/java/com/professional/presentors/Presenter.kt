@@ -1,10 +1,10 @@
 package com.professional.presentors
 
 import com.professional.models.AppState
-import com.professional.views.View
+import com.professional.views.MainView
 
-interface Presenter<T : View, V : AppState> {
-    fun attachView(view: View?)
-    fun detachView(view: View?)
+interface Presenter<T : MainView, V : AppState> {
+    fun attachView(mainView: MainView?)
+    fun detachView(mainView: MainView?)
     fun getData(word: String)
 }

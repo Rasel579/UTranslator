@@ -36,7 +36,7 @@ class MainFragment : BaseFragment() {
         }
     }
 
-    override fun createPresenter(): Presenter<com.professional.views.View, AppState> =
+    override fun createPresenter(): Presenter<com.professional.views.MainView, AppState> =
         MainPresenter(interaction, schedulers)
 
 

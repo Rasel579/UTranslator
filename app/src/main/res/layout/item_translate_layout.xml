@@ -9,25 +9,25 @@
         android:id="@+id/eng_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_margin="5dp"
+        android:textSize="@dimen/header"
+        android:layout_margin="@dimen/margin_text_translater"
         tools:text="text" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/translation_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/margin_text_translater"
         tools:text="text" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/transcription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/margin_text_translater"
         tools:text="text" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/high_divider"
         android:background="@color/cardview_dark_background"/>
 </LinearLayout>

@@ -2,6 +2,6 @@ package com.professional.views
 
 import com.professional.models.AppState
 
-interface View {
+interface MainView {
   fun renderData(appState: AppState)
 }

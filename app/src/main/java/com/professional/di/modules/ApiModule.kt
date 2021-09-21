@@ -13,20 +13,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class ApiModule {
-   private val baseUrl = "https://dictionary.skyeng.ru/"
-   private val gsonBuilder = GsonBuilder().create()
-   @Provides
-   fun provideTranslatorApi(): ServiceApi = Retrofit.Builder()
-       .baseUrl(baseUrl)
-       .client(OkHttpClient()
-           .newBuilder()
-           .addInterceptor(
-               HttpLoggingInterceptor().apply {
-                   level = HttpLoggingInterceptor.Level.BODY
-               }
-           ).build()
-       ).addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-       .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
-       .build()
-       .create(ServiceApi::class.java)
+    private val gsonBuilder = GsonBuilder().create()
+
+    @Provides
+    fun provideTranslatorApi(): ServiceApi = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(OkHttpClient()
+            .newBuilder()
+            .addInterceptor(
+                HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                }
+            ).build()
+        ).addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
+        .build()
+        .create(ServiceApi::class.java)
+
+    companion object {
+        private const val BASE_URL: String = "https://dictionary.skyeng.ru/"
+    }
 }

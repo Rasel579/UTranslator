@@ -1,9 +1,8 @@
 package com.professional.presentors
 
-import android.util.Log
 import com.professional.models.AppState
 import com.professional.rxschedulers.Schedulers
-import com.professional.views.View
+import com.professional.views.MainView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 import javax.inject.Inject
@@ -11,19 +10,19 @@ import javax.inject.Inject
 class MainPresenter @Inject constructor(
     private val interaction: Interaction,
     private val schedulers: Schedulers
-) : Presenter<View, AppState> {
+) : Presenter<MainView, AppState> {
     private val disposable = CompositeDisposable()
-    private var currentView: View? = null
-    override fun attachView(view: View?) {
-        if (currentView != view) {
-            currentView = view
+    private var currentMainView: MainView? = null
+    override fun attachView(mainView: MainView?) {
+        if (currentMainView != mainView) {
+            currentMainView = mainView
         }
     }
 
-    override fun detachView(view: View?) {
+    override fun detachView(mainView: MainView?) {
         disposable.clear()
-        if (currentView == view) {
-            currentView = null
+        if (currentMainView == mainView) {
+            currentMainView = null
         }
     }
 
@@ -32,10 +31,10 @@ class MainPresenter @Inject constructor(
             .getData(word)
             .observeOn(schedulers.main())
             .doOnSubscribe {
-                currentView?.renderData(AppState.Loading)
+                currentMainView?.renderData(AppState.Loading)
             }.subscribe(
-                { currentView?.renderData(it)},
-                { currentView?.renderData(AppState.Error(it))}
+                { currentMainView?.renderData(it)},
+                { currentMainView?.renderData(AppState.Error(it))}
             )
     }
 

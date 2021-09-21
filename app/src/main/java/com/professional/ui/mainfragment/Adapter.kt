@@ -30,8 +30,9 @@ class Adapter(
         fun bind(dataItem: TranslationDataItem) {
             binding.engText.text = dataItem.text
             binding.transcription.text = dataItem.meanings.first().transcription
-            binding.translationText.text = dataItem.meanings.first().translation.text
+            binding.translationText.text = dataItem.meanings.joinToString{
+                it.translation.text
+            }
         }
-
     }
 }
