@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="high_divider">2dp</dimen>
+    <dimen name="margin_text_translater">5dp</dimen>
+    <dimen name="header">20sp</dimen>
+</resources>
