@@ -1,6 +1,5 @@
 package com.professional.di.modules
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.professional.models.cloud.api.ServiceApi
 import dagger.Module

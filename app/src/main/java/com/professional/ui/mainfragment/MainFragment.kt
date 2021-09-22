@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import com.professional.databinding.FragmentMainBinding
 import com.professional.models.AppState
-import com.professional.presentors.Interaction
-import com.professional.presentors.MainPresenter
-import com.professional.presentors.Presenter
-import com.professional.rxschedulers.Schedulers
 import com.professional.ui.base.BaseFragment
+import com.professional.viewmodels.MainViewModel
+import com.professional.viewmodels.base.BaseViewModel
 import javax.inject.Inject
 
 class MainFragment : BaseFragment() {
@@ -21,10 +21,10 @@ class MainFragment : BaseFragment() {
     private var adapter: Adapter? = null
 
     @Inject
-    lateinit var interaction: Interaction
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    @Inject
-    lateinit var schedulers: Schedulers
+    override lateinit var viewModel: BaseViewModel
+
     override fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Loading -> viewBinding.progressCircular.visibility = View.VISIBLE
@@ -33,11 +33,11 @@ class MainFragment : BaseFragment() {
                 viewBinding.recycleView.adapter = adapter
                 viewBinding.progressCircular.visibility = View.GONE
             }
+            is AppState.Error -> Snackbar
+                .make(viewBinding.root, appState.error.localizedMessage, Snackbar.LENGTH_LONG)
+                .show()
         }
     }
-
-    override fun createPresenter(): Presenter<com.professional.views.MainView, AppState> =
-        MainPresenter(interaction, schedulers)
 
 
     override fun onCreateView(
@@ -49,8 +49,10 @@ class MainFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = viewModelFactory.create(MainViewModel::class.java)
+        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewBinding.translateBtn.setOnClickListener {
-            presenter.getData(viewBinding.editText.text.toString())
+            viewModel.getData(viewBinding.editText.text.toString())
         }
     }
 

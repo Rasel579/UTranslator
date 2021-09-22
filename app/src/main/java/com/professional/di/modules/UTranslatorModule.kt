@@ -4,9 +4,11 @@ import com.professional.models.cloud.CloudImpl
 import com.professional.models.cloud.CloudSource
 import com.professional.models.repository.Repository
 import com.professional.models.repository.RepositoryImpl
-import com.professional.presentors.Interaction
-import com.professional.presentors.MainInteraction
 import com.professional.ui.mainfragment.MainFragment
+import com.professional.utils.NetworkStatus
+import com.professional.utils.NetworkStatusImpl
+import com.professional.viewmodels.interactions.Interaction
+import com.professional.viewmodels.interactions.MainInteraction
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -24,4 +26,7 @@ interface UTranslatorModule {
 
     @Binds
     fun bindInteraction(interaction: MainInteraction): Interaction
+
+    @Binds
+    fun bindNetworkStatus(networkStatus: NetworkStatusImpl): NetworkStatus
 }
