@@ -5,9 +5,8 @@ import com.professional.rxschedulers.Schedulers
 import com.professional.viewmodels.base.BaseViewModel
 import com.professional.viewmodels.interactions.Interaction
 import io.reactivex.rxjava3.kotlin.plusAssign
-import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class MainViewModel(
     private val interaction: Interaction,
     private val schedulers: Schedulers
 ) : BaseViewModel() {

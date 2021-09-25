@@ -7,7 +7,7 @@ import com.professional.utils.NetworkStatus
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
-class MainInteraction @Inject constructor(
+class MainInteraction(
     private val repo: Repository,
     private val schedulers: Schedulers,
     private val networkStatus: NetworkStatus

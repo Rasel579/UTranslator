@@ -27,10 +27,10 @@ class Adapter(
     inner class ItemHolder(
         private val binding: ItemTranslateLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataItem: TranslationDataItem) {
-            binding.engText.text = dataItem.text
-            binding.transcription.text = dataItem.meanings.first().transcription
-            binding.translationText.text = dataItem.meanings.joinToString {
+        fun bind(dataItem: TranslationDataItem) = with(binding) {
+            engText.text = dataItem.text
+            transcription.text = dataItem.meanings.first().transcription
+            translationText.text = dataItem.meanings.joinToString {
                 it.translation.text
             }
         }

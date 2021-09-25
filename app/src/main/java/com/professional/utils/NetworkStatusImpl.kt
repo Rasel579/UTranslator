@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import javax.inject.Inject
 
-class NetworkStatusImpl @Inject constructor(context: Context) : NetworkStatus {
+class NetworkStatusImpl(context: Context) : NetworkStatus {
     private val statusObjects: BehaviorSubject<Boolean> = BehaviorSubject.create()
 
     init {

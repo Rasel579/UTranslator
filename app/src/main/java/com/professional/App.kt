@@ -1,15 +1,17 @@
 package com.professional
 
-import com.professional.di.DaggerApplicationComponent
-import com.professional.rxschedulers.SchedulersImpl
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import android.app.Application
+import com.professional.di.koin.applicationModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class App : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<App> =
-        DaggerApplicationComponent
-            .builder().apply {
-                withContext(applicationContext)
-                withSchedulers(SchedulersImpl())
-            }.build()
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            modules(modules = applicationModule)
+            androidContext(this@App)
+        }
+    }
 }

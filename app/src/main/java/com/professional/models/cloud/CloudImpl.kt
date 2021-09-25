@@ -6,7 +6,7 @@ import com.professional.rxschedulers.Schedulers
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
-class CloudImpl @Inject constructor(
+class CloudImpl(
     private val api: ServiceApi,
     private val schedulers: Schedulers
 ) : CloudSource{
