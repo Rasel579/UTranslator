@@ -18,7 +18,7 @@ class MainFragment : BaseFragment() {
 
     private var adapter: Adapter? = null
 
-    override val viewModel: BaseViewModel by inject<BaseViewModel>()
+    override val viewModel: BaseViewModel by inject()
 
     override fun renderData(appState: AppState) {
         when (appState) {

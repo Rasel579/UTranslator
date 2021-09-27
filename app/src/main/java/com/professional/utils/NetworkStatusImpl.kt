@@ -4,16 +4,11 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.subjects.BehaviorSubject
-import javax.inject.Inject
 
 class NetworkStatusImpl(context: Context) : NetworkStatus {
-    private val statusObjects: BehaviorSubject<Boolean> = BehaviorSubject.create()
+    private var statusObjects: Boolean = false
 
     init {
-        statusObjects.onNext(false)
         val manager = context
             .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val request = NetworkRequest
@@ -23,23 +18,21 @@ class NetworkStatusImpl(context: Context) : NetworkStatus {
             request,
             object : ConnectivityManager.NetworkCallback() {
                 override fun onAvailable(network: Network) {
-                    statusObjects.onNext(true)
+                    statusObjects = true
                 }
 
                 override fun onUnavailable() {
-                    statusObjects.onNext(false)
+                    statusObjects = false
                 }
 
                 override fun onLost(network: Network) {
-                    statusObjects.onNext(false)
+                    statusObjects = false
                 }
             }
         )
 
     }
 
-    override fun isOnline(): Observable<Boolean> = statusObjects
-    override fun onLineSingle(): Single<Boolean> = statusObjects.first(false)
-
+    override fun isOnline(): Boolean = statusObjects
 
 }

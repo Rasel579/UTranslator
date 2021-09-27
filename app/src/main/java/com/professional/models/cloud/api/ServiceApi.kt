@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface ServiceApi {
     @GET("api/public/v1/words/search")
-    fun getTranslation(@Query("search") word: String): Single<ArrayList<TranslationDataItem>>
+    suspend fun getTranslation(@Query("search") word: String): List<TranslationDataItem>
 }

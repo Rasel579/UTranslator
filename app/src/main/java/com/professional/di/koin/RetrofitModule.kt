@@ -2,6 +2,7 @@ package com.professional.di.koin
 
 import com.google.gson.GsonBuilder
 import com.professional.models.cloud.api.ServiceApi
+import kotlinx.coroutines.CoroutineScope
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,7 +23,7 @@ object RetrofitModule {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             ).build()
-        ).addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+        )
         .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
         .build()
         .create(ServiceApi::class.java)

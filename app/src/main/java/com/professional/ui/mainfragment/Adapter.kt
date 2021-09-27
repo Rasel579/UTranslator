@@ -7,7 +7,7 @@ import com.professional.databinding.ItemTranslateLayoutBinding
 import com.professional.models.data.TranslationDataItem
 
 class Adapter(
-    private val data: ArrayList<TranslationDataItem>
+    private val data: List<TranslationDataItem>
 ) : RecyclerView.Adapter<Adapter.ItemHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder =
         ItemHolder(
