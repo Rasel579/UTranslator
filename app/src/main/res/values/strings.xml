@@ -6,4 +6,6 @@
     <string name="end_language_text">Russian</string>
     <string name="hint_edit_text">Enter Text</string>
     <string name="btn_text">Translate</string>
+    <string name="history_title_menu">history</string>
+    <string name="favorite_menu_item">Favorite menu</string>
 </resources>

@@ -1,16 +1,15 @@
-package com.professional.ui.mainfragment
+package com.professional.ui.bottomsheetfragment
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.professional.databinding.ItemTranslateLayoutBinding
 import com.professional.models.data.TranslationDataItem
 
-class Adapter(
+class HistoryAdapter(
     private val data: List<TranslationDataItem>,
-    private val itemClickListener: OnItemClick
-) : RecyclerView.Adapter<Adapter.ItemHolder>() {
+) : RecyclerView.Adapter<HistoryAdapter.ItemHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder =
         ItemHolder(
             ItemTranslateLayoutBinding.inflate(
@@ -35,17 +34,7 @@ class Adapter(
             translationText.text = dataItem.meanings.joinToString {
                 it.translation.text
             }
-           binding.root.setOnClickListener {
-               itemClickListener.changeFrg(binding.engText.text.toString())
-           }
-            binding.favoriteBtn.setOnClickListener {
-                itemClickListener.saveToFavorite(dataItem)
-            }
-        }
-    }
 
-    interface OnItemClick{
-        fun changeFrg(word : String)
-        fun saveToFavorite(dataItem: TranslationDataItem)
+        }
     }
 }

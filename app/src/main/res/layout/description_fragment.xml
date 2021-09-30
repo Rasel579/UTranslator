@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.description.DescriptionFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_title"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Title"/>
+        <ImageView
+            android:id="@+id/img_word"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_margin="@dimen/margin_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/ic_launcher_foreground"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/translation_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_text_translater"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/img_word"
+            app:layout_constraintBottom_toTopOf="@id/translation_note"
+            tools:text="Translation Text"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/translation_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_text_translater"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/translation_text"
+            app:layout_constraintBottom_toTopOf="@id/transcription"
+            tools:text="Translation Note"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/transcription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_text_translater"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/translation_note"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Transcription"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

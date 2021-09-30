@@ -1,0 +1,25 @@
+ext {
+    dependeciesVersions = [
+            rxJava          : "3.0.0",
+            retrofit        : "2.9.0",
+            recycleView     : "1.2.0",
+            loging          : "4.9.1",
+            glide           : "4.11.0",
+            room            : "2.3.0",
+            viewBinding     : "1.4.7",
+            dagger          : "2.37",
+            koin            : "3.1.2",
+            coroutine       : "1.5.1",
+            corektx         : "1.6.0",
+            appcompat       : "1.3.1",
+            material        : "1.4.0",
+            constraintlayout: "2.1.1",
+            legacysupport   : "1.0.0",
+            junit           : "4.13.2",
+            extjunit       : "1.1.3",
+            espresso        : "3.4.0"
+    ]
+
+}
+
+

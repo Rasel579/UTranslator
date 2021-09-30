@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+
 }
 
 android {
@@ -37,59 +38,53 @@ android {
 }
 
 dependencies {
+    implementation "androidx.recyclerview:recyclerview:$dependeciesVersions.recycleview"
+
     /**RxJava2 **/
-    def rxJava = "3.0.0"
-    implementation "io.reactivex.rxjava3:rxandroid:$rxJava"
-    implementation "io.reactivex.rxjava3:rxjava:$rxJava"
-    implementation "io.reactivex.rxjava3:rxkotlin:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$dependeciesVersions.rxJava"
+    implementation "io.reactivex.rxjava3:rxjava:$dependeciesVersions.rxJava"
+    implementation "io.reactivex.rxjava3:rxkotlin:$dependeciesVersions.rxJava"
     /**Retrofit**/
-    def retrofit = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    implementation "com.squareup.retrofit2:retrofit:$dependeciesVersions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$dependeciesVersions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$dependeciesVersions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$dependeciesVersions.loging"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$dependeciesVersions.retrofit"
 
     /**Glide**/
-    def glide = "4.11.0"
-    implementation "com.github.bumptech.glide:glide:$glide"
-    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    implementation "com.github.bumptech.glide:glide:$dependeciesVersions.glide"
 
     /**Room**/
-    def room = "2.3.0"
-    implementation "androidx.room:room-runtime:$room"
-    implementation "androidx.room:room-ktx:$room"
-    implementation "androidx.room:room-rxjava3:$room"
-    kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-runtime:$dependeciesVersions.room"
+    implementation "androidx.room:room-ktx:$dependeciesVersions.room"
+    implementation "androidx.room:room-rxjava3:$dependeciesVersions.room"
+    kapt "androidx.room:room-compiler:$dependeciesVersions.room"
 
 
     /**view binding delegate**/
-    def viewBinding = "1.4.7"
-    implementation "com.github.kirich1409:viewbindingpropertydelegate:$viewBinding"
+    implementation "com.github.kirich1409:viewbindingpropertydelegate:$dependeciesVersions.viewBinding"
     /**Dagger 2**/
-    def dagger = "2.37"
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.google.dagger:dagger-android:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
-    kapt "com.google.dagger:dagger-android-processor:$dagger"
+    implementation "com.google.dagger:dagger:$dependeciesVersions.dagger"
+    implementation "com.google.dagger:dagger-android:$dependeciesVersions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$dependeciesVersions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$dependeciesVersions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dependeciesVersions.dagger"
 
     /**Koin*/
-    def koin_version = "3.1.2"
-    implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-core:$dependeciesVersions.koin"
+    implementation "io.insert-koin:koin-android:$dependeciesVersions.koin"
+    implementation "io.insert-koin:koin-android-compat:$dependeciesVersions.koin"
 
     /**Coroutines*/
-    def coroutine_version = "1.5.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dependeciesVersions.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dependeciesVersions.coroutine"
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.core:core-ktx:$dependeciesVersions.corektx"
+    implementation "androidx.appcompat:appcompat:$dependeciesVersions.appcompat"
+    implementation "com.google.android.material:material:$dependeciesVersions.material"
+    implementation "androidx.constraintlayout:constraintlayout:$dependeciesVersions.constraintlayout"
+    implementation "androidx.legacy:legacy-support-v4:$dependeciesVersions.legacysupport"
+    testImplementation "junit:junit:$dependeciesVersions.junit"
+    androidTestImplementation "androidx.test.ext:junit:$dependeciesVersions.extjunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$dependeciesVersions.espresso"
 }

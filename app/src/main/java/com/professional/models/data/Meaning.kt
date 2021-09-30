@@ -1,10 +1,12 @@
 package com.professional.models.data
 
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Meaning(
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
-    val id: Int,
+    val meaningId: Int,
     @SerializedName("imageUrl")
     val imageUrl: String,
     @SerializedName("partOfSpeechCode")
