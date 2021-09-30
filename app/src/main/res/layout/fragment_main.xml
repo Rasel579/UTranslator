@@ -25,12 +25,12 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_weight="1"
-           android:src="@android:drawable/stat_notify_sync"
-           android:contentDescription="TODO" />
+           android:src="@android:drawable/stat_notify_sync" />
        <androidx.constraintlayout.utils.widget.MotionButton
            android:id="@+id/translation_language"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:layout_margin="@dimen/margin_text_translater"
            android:layout_weight="2"
            android:text="@string/end_language_text"/>
    </LinearLayout>
