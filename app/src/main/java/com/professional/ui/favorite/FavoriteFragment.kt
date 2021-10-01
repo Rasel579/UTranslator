@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.professional.databinding.FavoriteFragmentBinding
-import com.professional.models.AppState
+import com.test_app.model.AppState
 import com.professional.ui.base.BaseFragment
 import com.professional.viewmodels.FavoriteViewModel
 import org.koin.android.ext.android.inject
@@ -17,9 +17,9 @@ class FavoriteFragment : BaseFragment() {
     override val viewModel: FavoriteViewModel by inject(named<FavoriteViewModel>())
     private val viewBinding: FavoriteFragmentBinding by viewBinding(CreateMethod.INFLATE)
 
-    override fun renderData(appState: AppState) {
+    override fun renderData(appState: com.test_app.model.AppState) {
         when (appState) {
-            is AppState.SuccessFavorite -> {
+            is com.test_app.model.AppState.SuccessFavorite -> {
                 viewBinding.favoriteRecycleView.adapter = FavoriteAdapter(appState.data)
             }
         }

@@ -5,9 +5,9 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.fragment.app.Fragment
 import com.professional.R
-import com.professional.models.AppState
-import com.professional.utils.ImageLoader
+import com.test_app.model.AppState
 import com.professional.viewmodels.base.BaseViewModel
+import com.test_app.utils.ImageLoader
 
 abstract class BaseFragment : Fragment() {
     abstract fun renderData(appState: AppState)

@@ -2,7 +2,7 @@ package com.professional.di.koin
 
 import com.google.gson.GsonBuilder
 import com.professional.BuildConfig
-import com.professional.models.cloud.api.ServiceApi
+import com.test_app.repository.cloud.api.ServiceApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +12,7 @@ object RetrofitModule {
     private const val BASE_URL = "https://dictionary.skyeng.ru/"
     private val gsonBuilder = GsonBuilder().create()
 
-    fun provideTranslatorApi(): ServiceApi = Retrofit.Builder()
+    fun provideTranslatorApi(): com.test_app.repository.cloud.api.ServiceApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(
             OkHttpClient()
@@ -28,6 +28,6 @@ object RetrofitModule {
         )
         .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
         .build()
-        .create(ServiceApi::class.java)
+        .create(com.test_app.repository.cloud.api.ServiceApi::class.java)
 
 }

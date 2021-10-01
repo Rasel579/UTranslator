@@ -1,7 +1,7 @@
 package com.professional.viewmodels
 
-import com.professional.models.AppState
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.AppState
+import com.test_app.model.data.TranslationDataItem
 import com.professional.viewmodels.base.BaseViewModel
 import com.professional.viewmodels.interactions.Interaction
 import kotlinx.coroutines.launch

@@ -1,8 +1,7 @@
 package com.professional.viewmodels.interactions
 
-import com.professional.models.AppState
-import com.professional.models.data.TranslationDataItem
-import com.professional.models.repository.Repository
+import com.test_app.model.AppState
+import com.test_app.repository.Repository
 
 class DescriptionInteraction(
     private val repo: Repository
@@ -14,7 +13,7 @@ class DescriptionInteraction(
     override suspend fun getHistoryData(): AppState =
         AppState.Success(repo.getHistoryData())
 
-    override suspend fun saveToFavorite(item: TranslationDataItem) {
+    override suspend fun saveToFavorite(item: com.test_app.model.data.TranslationDataItem) {
         TODO("Not yet implemented")
     }
 

@@ -1,8 +1,9 @@
 package com.professional.ui
 
 import android.os.Bundle
-import android.util.Log
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.professional.R
 import com.professional.ui.base.BaseFragment
 import com.professional.ui.mainfragment.MainFragment

@@ -1,6 +1,6 @@
 package com.professional.viewmodels
 
-import com.professional.models.AppState
+import com.test_app.model.AppState
 import com.professional.viewmodels.base.BaseViewModel
 import com.professional.viewmodels.interactions.Interaction
 import kotlinx.coroutines.launch

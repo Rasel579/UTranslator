@@ -9,7 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.professional.databinding.HistoryFragmentBinding
-import com.professional.models.AppState
+import com.test_app.model.AppState
 import com.professional.viewmodels.HistoryViewModel
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -30,12 +30,12 @@ class HistoryFragment : BottomSheetDialogFragment() {
         viewModel.getData()
     }
 
-    private fun renderData(appState: AppState) {
+    private fun renderData(appState: com.test_app.model.AppState) {
         when (appState) {
-            is AppState.Success -> {
+            is com.test_app.model.AppState.Success -> {
                 viewBinding.historyRecycleView.adapter = HistoryAdapter(appState.data)
             }
-            is AppState.Error -> appState.error.message?.let {
+            is com.test_app.model.AppState.Error -> appState.error.message?.let {
                 Snackbar
                     .make(viewBinding.root, it, Snackbar.LENGTH_LONG)
                     .show()

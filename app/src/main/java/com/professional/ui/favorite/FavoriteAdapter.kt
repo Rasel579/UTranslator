@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.professional.databinding.ItemFavoriteLayoutBinding
-import com.professional.models.store.room.entity.FavoriteDataEntity
+import com.test_app.model.data.entity.FavoriteDataEntity
 
 class FavoriteAdapter(
-    private val data: List<FavoriteDataEntity>
+    private val data: List<com.test_app.model.data.entity.FavoriteDataEntity>
 ) : RecyclerView.Adapter<FavoriteAdapter.ItemFavView>() {
 
 
@@ -29,7 +29,7 @@ class FavoriteAdapter(
     inner class ItemFavView(
         private val binding: ItemFavoriteLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataEntity: FavoriteDataEntity) {
+        fun bind(dataEntity: com.test_app.model.data.entity.FavoriteDataEntity) {
             binding.title.text = dataEntity.word
             binding.translation.text = dataEntity.translation
         }

@@ -2,10 +2,9 @@ package com.professional.ui.bottomsheetfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.professional.databinding.ItemTranslateLayoutBinding
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.data.TranslationDataItem
 
 class HistoryAdapter(
     private val data: List<TranslationDataItem>,

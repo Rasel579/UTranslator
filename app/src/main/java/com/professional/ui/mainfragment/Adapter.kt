@@ -1,11 +1,10 @@
 package com.professional.ui.mainfragment
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.professional.databinding.ItemTranslateLayoutBinding
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.data.TranslationDataItem
 
 class Adapter(
     private val data: List<TranslationDataItem>,
@@ -29,7 +28,7 @@ class Adapter(
     inner class ItemHolder(
         private val binding: ItemTranslateLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataItem: TranslationDataItem) = with(binding) {
+        fun bind(dataItem: com.test_app.model.data.TranslationDataItem) = with(binding) {
             engText.text = dataItem.text
             transcription.text = dataItem.meanings.first().transcription
             translationText.text = dataItem.meanings.joinToString {
@@ -46,6 +45,6 @@ class Adapter(
 
     interface OnItemClick{
         fun changeFrg(word : String)
-        fun saveToFavorite(dataItem: TranslationDataItem)
+        fun saveToFavorite(dataItem: com.test_app.model.data.TranslationDataItem)
     }
 }

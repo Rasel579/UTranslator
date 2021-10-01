@@ -41,6 +41,12 @@ android {
 }
 
 dependencies {
+
+    /**Modules**/
+    implementation(project(":utils"))
+    implementation(project(":repository"))
+    implementation(project(":model"))
+
     implementation (Design.recycleView)
 
     /**RxJava2 **/
@@ -53,8 +59,7 @@ dependencies {
     implementation (Retrofit.loging)
     implementation (Retrofit.retrofit)
 
-    /**Glide**/
-    implementation (Glide.glide)
+
 
     /**Room**/
     implementation (Room.room)

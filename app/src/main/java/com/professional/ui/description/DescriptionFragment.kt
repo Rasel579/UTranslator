@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.professional.App
 import com.professional.databinding.DescriptionFragmentBinding
-import com.professional.models.AppState
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.AppState
+import com.test_app.model.data.TranslationDataItem
 import com.professional.ui.base.BaseFragment
 import com.professional.viewmodels.DescriptionViewModel
-import com.professional.viewmodels.base.BaseViewModel
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
@@ -30,7 +28,6 @@ class DescriptionFragment : BaseFragment() {
         when (appState) {
             is AppState.SuccessDescription -> {
                 initData(appState.data)
-                Log.e("appstate_view", appState.data.toString())
             }
         }
     }

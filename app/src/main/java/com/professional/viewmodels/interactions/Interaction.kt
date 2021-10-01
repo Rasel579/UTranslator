@@ -1,7 +1,7 @@
 package com.professional.viewmodels.interactions
 
-import com.professional.models.AppState
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.AppState
+import com.test_app.model.data.TranslationDataItem
 
 interface Interaction {
     suspend fun getData(word: String): AppState
