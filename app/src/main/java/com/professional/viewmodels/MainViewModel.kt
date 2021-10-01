@@ -1,14 +1,13 @@
 package com.professional.viewmodels
 
+import com.test_app.core.interaction.Interaction
 import com.test_app.model.AppState
 import com.test_app.model.data.TranslationDataItem
-import com.professional.viewmodels.base.BaseViewModel
-import com.professional.viewmodels.interactions.Interaction
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val interaction: Interaction,
-) : BaseViewModel() {
+) : com.test_app.core.baseviewmodel.BaseViewModel() {
     override fun handleError(throwable: Throwable) {
         customLiveData.postValue(AppState.Error(throwable))
     }

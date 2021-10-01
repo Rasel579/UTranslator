@@ -12,7 +12,7 @@ object RetrofitModule {
     private const val BASE_URL = "https://dictionary.skyeng.ru/"
     private val gsonBuilder = GsonBuilder().create()
 
-    fun provideTranslatorApi(): com.test_app.repository.cloud.api.ServiceApi = Retrofit.Builder()
+    fun provideTranslatorApi(): ServiceApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(
             OkHttpClient()
@@ -28,6 +28,6 @@ object RetrofitModule {
         )
         .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
         .build()
-        .create(com.test_app.repository.cloud.api.ServiceApi::class.java)
+        .create(ServiceApi::class.java)
 
 }

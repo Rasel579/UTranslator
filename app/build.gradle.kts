@@ -46,6 +46,10 @@ dependencies {
     implementation(project(":utils"))
     implementation(project(":repository"))
     implementation(project(":model"))
+    implementation(project(":core"))
+    implementation(project(":historyfeature"))
+    implementation(project(":descriptionfeature"))
+    implementation(project(":favoritefeature"))
 
     implementation (Design.recycleView)
 

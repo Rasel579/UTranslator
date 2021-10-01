@@ -1,6 +1,8 @@
 package com.professional.viewmodels.interactions
 
+import com.test_app.core.interaction.Interaction
 import com.test_app.model.AppState
+import com.test_app.model.data.TranslationDataItem
 import com.test_app.repository.Repository
 import com.test_app.utils.NetworkStatus
 
@@ -21,7 +23,7 @@ class MainInteraction(
     override suspend fun getHistoryData(): AppState =
         AppState.Success(repo.getHistoryData())
 
-    override suspend fun saveToFavorite(item: com.test_app.model.data.TranslationDataItem) =
+    override suspend fun saveToFavorite(item: TranslationDataItem) =
         repo.insertFavorite(item)
 
 

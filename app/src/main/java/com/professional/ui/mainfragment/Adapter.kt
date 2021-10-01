@@ -28,7 +28,7 @@ class Adapter(
     inner class ItemHolder(
         private val binding: ItemTranslateLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataItem: com.test_app.model.data.TranslationDataItem) = with(binding) {
+        fun bind(dataItem: TranslationDataItem) = with(binding) {
             engText.text = dataItem.text
             transcription.text = dataItem.meanings.first().transcription
             translationText.text = dataItem.meanings.joinToString {
@@ -45,6 +45,6 @@ class Adapter(
 
     interface OnItemClick{
         fun changeFrg(word : String)
-        fun saveToFavorite(dataItem: com.test_app.model.data.TranslationDataItem)
+        fun saveToFavorite(dataItem: TranslationDataItem)
     }
 }
