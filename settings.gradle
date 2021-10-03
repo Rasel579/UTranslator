@@ -8,3 +8,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "UTranslator"
 include ':app'
+include ':core'
+include ':utils'
+include ':model'
+include ':repository'
+include ':historyfeature'
+include ':descriptionfeature'
+include ':favoritefeature'

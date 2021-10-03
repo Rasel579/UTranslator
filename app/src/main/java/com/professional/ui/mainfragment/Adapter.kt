@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.professional.databinding.ItemTranslateLayoutBinding
-import com.professional.models.data.TranslationDataItem
+import com.test_app.model.data.TranslationDataItem
 
 class Adapter(
-    private val data: List<TranslationDataItem>
+    private val data: List<TranslationDataItem>,
+    private val itemClickListener: OnItemClick
 ) : RecyclerView.Adapter<Adapter.ItemHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder =
         ItemHolder(
@@ -33,6 +34,17 @@ class Adapter(
             translationText.text = dataItem.meanings.joinToString {
                 it.translation.text
             }
+           binding.root.setOnClickListener {
+               itemClickListener.changeFrg(binding.engText.text.toString())
+           }
+            binding.favoriteBtn.setOnClickListener {
+                itemClickListener.saveToFavorite(dataItem)
+            }
         }
+    }
+
+    interface OnItemClick{
+        fun changeFrg(word : String)
+        fun saveToFavorite(dataItem: TranslationDataItem)
     }
 }
