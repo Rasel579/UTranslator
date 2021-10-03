@@ -19,7 +19,8 @@ abstract class BaseFragment : Fragment() {
             .replace(
                 layoutId,
                 fragment
-            ).addToBackStack(null)
+            )
+            .addToBackStack(null)
             .commit()
     }
 
@@ -33,7 +34,4 @@ abstract class BaseFragment : Fragment() {
         inflater.inflate(R.menu.main, menu)
     }
 
-    companion object {
-        const val BASE_FRAGMENT_TAG = "base fragment tag"
-    }
 }

@@ -13,6 +13,7 @@ import com.test_app.core.baseui.BaseFragment
 import com.test_app.descriptionfeature.databinding.DescriptionFragmentBinding
 import com.test_app.descriptionfeature.viewmodel.DescriptionViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class DescriptionFragment : BaseFragment() {
@@ -21,7 +22,7 @@ class DescriptionFragment : BaseFragment() {
         arguments?.getString(ARG_STRING)
     }
 
-    override val viewModel by inject<DescriptionViewModel>(named<DescriptionViewModel>())
+    override val viewModel : DescriptionViewModel by viewModel(named<DescriptionViewModel>())
 
     override fun renderData(appState: AppState) {
         when (appState) {

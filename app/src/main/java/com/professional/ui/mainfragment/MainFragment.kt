@@ -1,23 +1,25 @@
 package com.professional.ui.mainfragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.professional.R
 import com.professional.databinding.FragmentMainBinding
+import com.professional.viewmodels.MainViewModel
 import com.test_app.core.baseui.BaseFragment
 import com.test_app.descriptionfeature.ui.DescriptionFragment
 import com.test_app.favoritefeature.ui.FavoriteFragment
-import com.professional.viewmodels.MainViewModel
 import com.test_app.historyfeature.ui.HistoryFragment
 import com.test_app.model.AppState
 import com.test_app.model.data.TranslationDataItem
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class MainFragment : BaseFragment() {
@@ -25,7 +27,7 @@ class MainFragment : BaseFragment() {
 
     private var adapter: Adapter? = null
 
-    override val viewModel: MainViewModel by inject(named<MainViewModel>())
+    override val viewModel: MainViewModel by viewModel(named<MainViewModel>())
 
     override fun renderData(appState: AppState) {
         when (appState) {
@@ -46,6 +48,12 @@ class MainFragment : BaseFragment() {
                     }
                 )
                 viewBinding.recycleView.adapter = adapter
+                viewBinding.recycleView.layoutManager =
+                    LinearLayoutManager(
+                        requireContext(),
+                        LinearLayoutManager.VERTICAL,
+                        false
+                    )
                 viewBinding.progressCircular.visibility = View.GONE
             }
             is AppState.Error -> appState.error.message?.let {
@@ -61,15 +69,11 @@ class MainFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return viewBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewBinding.translateBtn.setOnClickListener {
             viewModel.getData(viewBinding.editText.text.toString())
         }
+        return viewBinding.root
     }
 
 

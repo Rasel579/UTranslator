@@ -23,7 +23,7 @@
         <ImageView
             android:id="@+id/img_word"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/image_width_size"
             android:layout_margin="@dimen/margin_image_view"
             app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintStart_toStartOf="parent"

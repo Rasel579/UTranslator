@@ -10,10 +10,11 @@ import com.test_app.core.baseui.BaseFragment
 import com.test_app.favoritefeature.databinding.FavoriteFragmentBinding
 import com.test_app.favoritefeature.viewmodel.FavoriteViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class FavoriteFragment : BaseFragment() {
-    override val viewModel: FavoriteViewModel by inject(named<FavoriteViewModel>())
+    override val viewModel: FavoriteViewModel by viewModel(named<FavoriteViewModel>())
     private val viewBinding: FavoriteFragmentBinding by viewBinding(CreateMethod.INFLATE)
 
     override fun renderData(appState: com.test_app.model.AppState) {

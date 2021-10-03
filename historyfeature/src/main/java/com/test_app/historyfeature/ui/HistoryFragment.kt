@@ -8,15 +8,15 @@ import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
-import com.test_app.model.AppState
 import com.test_app.historyfeature.databinding.HistoryFragmentBinding
 import com.test_app.historyfeature.viewmodel.HistoryViewModel
-import org.koin.android.ext.android.inject
+import com.test_app.model.AppState
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class HistoryFragment : BottomSheetDialogFragment() {
     private val viewBinding: HistoryFragmentBinding by viewBinding(CreateMethod.INFLATE)
-    private val viewModel: HistoryViewModel by inject(named<HistoryViewModel>())
+    private val viewModel: HistoryViewModel by viewModel(named<HistoryViewModel>())
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

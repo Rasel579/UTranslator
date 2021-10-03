@@ -13,11 +13,13 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .add(R.id.container, MainFragment.newInstance())
-            .addToBackStack(BaseFragment.BASE_FRAGMENT_TAG)
             .commit()
     }
 
     override fun onBackPressed() {
-        supportFragmentManager.popBackStackImmediate(BaseFragment.BASE_FRAGMENT_TAG, 0)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, MainFragment.newInstance())
+            .commit()
     }
 }

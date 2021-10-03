@@ -3,23 +3,18 @@ package com.test_app.repository.store
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.test_app.model.data.TranslationDataItem
-import com.test_app.repository.store.room.HistoryDao
 import com.test_app.model.data.entity.FavoriteDataEntity
 import com.test_app.model.data.entity.TranslationDataItemEntity
+import com.test_app.repository.store.room.HistoryDao
 
 class LocalSourceImpl(
     private val localDatabase: HistoryDao
 ) : LocalSource {
-    override suspend fun getData(): List<TranslationDataItem> {
-        val data = localDatabase.getAll().let { item ->
-            item.flatMap { item ->
-                listOf<TranslationDataItem>(
-                    switchMapFromEntityToData(item)
-                )
+    override suspend fun getData(): List<TranslationDataItem> =
+        localDatabase.getAll()
+            .map { item ->
+                switchMapFromEntityToData(item)
             }
-        }
-        return data
-    }
 
 
     override suspend fun save(word: TranslationDataItem) {
@@ -66,7 +61,10 @@ class LocalSourceImpl(
         Gson().toJson(meaning, object : TypeToken<List<com.test_app.model.data.Meaning>>() {}.type)
 
     private fun convertFromJson(meaning: String): List<com.test_app.model.data.Meaning> =
-        Gson().fromJson(meaning, object : TypeToken<List<com.test_app.model.data.Meaning>>() {}.type)
+        Gson().fromJson(
+            meaning,
+            object : TypeToken<List<com.test_app.model.data.Meaning>>() {}.type
+        )
 
 
 }
