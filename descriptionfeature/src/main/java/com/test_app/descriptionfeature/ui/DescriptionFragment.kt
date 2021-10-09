@@ -13,16 +13,21 @@ import com.test_app.core.baseui.BaseFragment
 import com.test_app.descriptionfeature.databinding.DescriptionFragmentBinding
 import com.test_app.descriptionfeature.viewmodel.DescriptionViewModel
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 
-class DescriptionFragment : BaseFragment() {
-    private val viewBinding: DescriptionFragmentBinding by viewBinding(CreateMethod.INFLATE)
+class DescriptionFragment : BaseFragment(), AndroidScopeComponent {
+    override val scope: Scope by fragmentScope()
+    override val viewModel : DescriptionViewModel by viewModel(named<DescriptionViewModel>())
+
     private val word by lazy {
         arguments?.getString(ARG_STRING)
     }
 
-    override val viewModel : DescriptionViewModel by viewModel(named<DescriptionViewModel>())
+    private val viewBinding: DescriptionFragmentBinding by viewBinding(CreateMethod.INFLATE)
 
     override fun renderData(appState: AppState) {
         when (appState) {
@@ -54,11 +59,11 @@ class DescriptionFragment : BaseFragment() {
         return viewBinding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         word?.let { viewModel.getData(it) }
     }
-
 
     companion object {
         private const val ARG_STRING = "arg_string"

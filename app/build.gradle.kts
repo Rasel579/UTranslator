@@ -51,7 +51,6 @@ dependencies {
     implementation(project(":descriptionfeature"))
     implementation(project(":favoritefeature"))
 
-    implementation (Design.recycleView)
 
     /**RxJava2 **/
     implementation (RxJava.rxJava)
@@ -90,6 +89,8 @@ dependencies {
     implementation (Coroutines.coroutinesCore)
     implementation (Coroutines.coroutinesAndroid)
 
+
+    implementation (Design.recycleView)
     implementation (Kotlin.core)
     implementation (Design.appcompat)
     implementation (Design.material)

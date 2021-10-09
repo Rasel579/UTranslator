@@ -1,4 +1,4 @@
-package com.test_app.utils
+package com.test_app.utils.network
 
 
 interface NetworkStatus {

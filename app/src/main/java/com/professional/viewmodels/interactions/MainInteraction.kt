@@ -4,7 +4,7 @@ import com.test_app.core.interaction.Interaction
 import com.test_app.model.AppState
 import com.test_app.model.data.TranslationDataItem
 import com.test_app.repository.Repository
-import com.test_app.utils.NetworkStatus
+import com.test_app.utils.network.NetworkStatus
 
 class MainInteraction(
     private val repo: Repository,
