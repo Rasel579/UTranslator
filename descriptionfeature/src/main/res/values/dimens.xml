@@ -11,4 +11,6 @@
     <dimen name="item_size">15sp</dimen>
     <dimen name="margin_fav_item">10dp</dimen>
     <dimen name="image_width_size">300dp</dimen>
+    <dimen name="width_progress_bar">500dp</dimen>
+    <dimen name="height_progress_bar">500dp</dimen>
 </resources>

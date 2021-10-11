@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.test_app.model.AppState
-import com.test_app.model.data.TranslationDataItem
 import com.test_app.core.baseui.BaseFragment
 import com.test_app.descriptionfeature.databinding.DescriptionFragmentBinding
 import com.test_app.descriptionfeature.viewmodel.DescriptionViewModel
-import org.koin.android.ext.android.inject
+import com.test_app.model.AppState
+import com.test_app.model.data.TranslationDataItem
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +20,7 @@ import org.koin.core.scope.Scope
 
 class DescriptionFragment : BaseFragment(), AndroidScopeComponent {
     override val scope: Scope by fragmentScope()
-    override val viewModel : DescriptionViewModel by viewModel(named<DescriptionViewModel>())
+    override val viewModel: DescriptionViewModel by viewModel(named<DescriptionViewModel>())
 
     private val word by lazy {
         arguments?.getString(ARG_STRING)
@@ -37,7 +36,7 @@ class DescriptionFragment : BaseFragment(), AndroidScopeComponent {
         }
     }
 
-    private fun initData(data: TranslationDataItem)= with(viewBinding) {
+    private fun initData(data: TranslationDataItem) = with(viewBinding) {
         title.text = data.text
         transcription.text = data.meanings.joinToString {
             it.transcription
@@ -48,7 +47,13 @@ class DescriptionFragment : BaseFragment(), AndroidScopeComponent {
         translationNote.text = data.meanings.joinToString {
             it.translation.note
         }
-        imageLoader.load("https:${data.meanings.first().imageUrl}", imgWord)
+        progressCircular.visibility = View.VISIBLE
+        imageLoader.load(
+            url = "https:${data.meanings.first().imageUrl}",
+            imageView = imgWord,
+            root = viewBinding.root,
+            progressBar = progressCircular
+        )
     }
 
     override fun onCreateView(

@@ -2,14 +2,14 @@
 plugins {
     id ("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
     id ("kotlin-kapt")
 
 }
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId = Config.applicationId
         minSdk =  Config.minSdk
         targetSdk  = Config.targetSdk
