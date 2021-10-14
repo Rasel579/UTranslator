@@ -1,4 +1,4 @@
-package com.test_app.utils
+package com.test_app.utils.network
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -1,7 +1,6 @@
 package com.professional.ui.mainfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.professional.R
 import com.professional.databinding.FragmentMainBinding
@@ -19,19 +19,25 @@ import com.test_app.favoritefeature.ui.FavoriteFragment
 import com.test_app.historyfeature.ui.HistoryFragment
 import com.test_app.model.AppState
 import com.test_app.model.data.TranslationDataItem
+import com.test_app.utils.views.getViewById
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(), AndroidScopeComponent {
     private val viewBinding: FragmentMainBinding by viewBinding(CreateMethod.INFLATE)
-
-    private var adapter: Adapter? = null
+    private val progressBar by getViewById<CircularProgressIndicator>(R.id.progress_circular)
+    override val scope by fragmentScope()
 
     override val viewModel: MainViewModel by viewModel(named<MainViewModel>())
 
+    private var adapter: Adapter? = null
+
+
     override fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Loading -> viewBinding.progressCircular.visibility = View.VISIBLE
+            is AppState.Loading -> progressBar.visibility = View.VISIBLE
             is AppState.Success -> {
                 adapter = Adapter(
                     appState.data,
@@ -54,7 +60,7 @@ class MainFragment : BaseFragment() {
                         LinearLayoutManager.VERTICAL,
                         false
                     )
-                viewBinding.progressCircular.visibility = View.GONE
+                progressBar.visibility = View.GONE
             }
             is AppState.Error -> appState.error.message?.let {
                 Snackbar
