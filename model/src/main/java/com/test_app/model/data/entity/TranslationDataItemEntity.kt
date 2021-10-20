@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class TranslationDataItemEntity(
-    @field: PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val meanings: String,
     val text: String

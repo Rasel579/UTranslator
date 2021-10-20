@@ -19,6 +19,7 @@ import com.test_app.favoritefeature.ui.FavoriteFragment
 import com.test_app.historyfeature.ui.HistoryFragment
 import com.test_app.model.AppState
 import com.test_app.model.data.TranslationDataItem
+import com.test_app.utils.validateField
 import com.test_app.utils.views.getViewById
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
@@ -49,8 +50,6 @@ class MainFragment : BaseFragment(), AndroidScopeComponent {
                         override fun saveToFavorite(dataItem: TranslationDataItem) {
                             viewModel.saveToFavorite(dataItem)
                         }
-
-
                     }
                 )
                 viewBinding.recycleView.adapter = adapter
@@ -77,7 +76,10 @@ class MainFragment : BaseFragment(), AndroidScopeComponent {
     ): View {
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewBinding.translateBtn.setOnClickListener {
-            viewModel.getData(viewBinding.editText.text.toString())
+            val searchWord = viewBinding.editText.text.toString()
+            if (validateField(searchWord)){
+                viewModel.getData(viewBinding.editText.text.toString())
+            }
         }
         return viewBinding.root
     }
